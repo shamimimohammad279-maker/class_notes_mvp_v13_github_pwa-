@@ -1,0 +1,44 @@
+{
+  "name": "Class Notes",
+  "short_name": "Class Notes",
+  "description": "مرکز مدیریت و آماده‌سازی یادداشت‌های کلاس",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "dir": "rtl",
+  "lang": "fa",
+  "background_color": "#08121c",
+  "theme_color": "#172033",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "./",
+  "screenshots": [
+    {
+      "src": "./screenshots/day.png",
+      "sizes": "729x1536",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "نمای روز برنامه"
+    },
+    {
+      "src": "./screenshots/night.png",
+      "sizes": "711x1536",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "نمای شب برنامه"
+    }
+  ]
+}

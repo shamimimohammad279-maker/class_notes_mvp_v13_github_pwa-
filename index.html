@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#172033"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<title>Class Notes v0.5</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="scene" aria-hidden="true"><div class="sky-image day-image"></div><div class="sky-image night-image"></div></div>
+<button class="sun-hotspot" id="sunHotspot" aria-label="تغییر روز و شب" title="برای رفتن به شب روی خورشید بزن"></button>
+<button class="theme-toggle" id="themeToggle" aria-label="تغییر حالت روشن و تاریک" title="تغییر روز و شب"></button>
+<div class="app" id="app">
+<header class="header"><div class="brand"><div class="logo"><img src="./icons/logo.svg" alt=""></div><div><h1>Class Notes</h1><div class="sub">مرکز مدیریت و آماده‌سازی یادداشت‌های کلاس</div></div></div><div class="badge">نسخه 0.5 • نیمه‌خودکار</div></header>
+
+<section class="card">
+<div class="cardhead"><div class="num">۱</div><h2>اطلاعات جلسه</h2></div>
+<div class="grid"><div><label>درس</label><input id="subject" placeholder="مثلاً فیزیک"></div><div><label>شماره جلسه</label><input id="session" type="number" min="1" placeholder="مثلاً ۱۲"></div></div>
+<label>نوع کلاس</label><select id="type"><option>حضوری</option><option>آنلاین</option></select>
+</section>
+
+<section class="card">
+<div class="cardhead"><div class="num">۲</div><h2>متن خام جلسه</h2></div>
+<div class="hint">متن را همین‌جا بنویس. این متن <b>حتماً و بدون تغییر</b> داخل Prompt قرار می‌گیرد و نمونه اصلی سبک نوشتنت هم هست.</div>
+<textarea id="raw" placeholder="یادداشت خامت را اینجا بنویس..."></textarea>
+<div class="tags"><span class="tag">[فرمول] ... [/فرمول]</span><span class="tag">[تکلیف] ... [/تکلیف]</span><span class="tag">[سؤال] ... [/سؤال]</span><span class="tag">[مهم] ... [/مهم]</span></div>
+</section>
+
+<section class="card">
+<div class="cardhead"><div class="num">۳</div><h2>عکس / فایل جلسه</h2></div>
+<div class="drop" id="drop"><div class="dropicon"><img src="./icons/upload.svg" alt=""></div><strong>عکس دفتر یا فایل صوتی/متنی را انتخاب کن</strong><div class="hint">عکس انتخاب‌شده هم در Prompt معرفی می‌شود و هم همراه فایل Markdown در بسته خروجی قرار می‌گیرد.</div><input id="file" type="file" accept="image/*,audio/*,.txt,.md" hidden></div>
+<div class="file" id="fileName"></div><img id="preview" class="preview">
+</section>
+
+<section class="card">
+<div class="cardhead"><div class="num">۴</div><h2>ساخت Prompt برای Gemini</h2></div>
+<div class="hint">اگر عکس داری، آن را علاوه بر Prompt در Gemini هم به‌عنوان فایل تصویری ضمیمه کن؛ متن Prompt به آن اشاره می‌کند.</div>
+<div class="actions"><button class="primary" id="makePrompt">✦ ساخت Prompt</button><button class="secondary" id="copyPrompt">کپی Prompt</button></div>
+<div id="promptBox" class="output"><div class="notice">Prompt آماده است. متن خام را در پایین Prompt هم می‌بینی تا مطمئن شوی واقعاً وارد شده.</div><pre id="prompt"></pre></div>
+</section>
+
+<section class="card">
+<div class="cardhead"><div class="num">۵</div><h2>نتیجه AI و خروجی Obsidian</h2></div>
+<textarea id="aiResult" placeholder="خروجی Markdown از Gemini را اینجا Paste کن..."></textarea>
+<div class="actions"><button class="primary" id="downloadPackage">↓ ساخت بسته Obsidian</button><button class="secondary" id="copyResult">کپی نتیجه</button><button class="secondary" id="clear">شروع جلسه جدید</button></div>
+<div class="hint">بسته Obsidian شامل فایل Markdown و عکس جلسه است. داخل Vault استخراجش کن تا تصویر با همان یادداشت نمایش داده شود.</div>
+<div id="status" class="notice" style="display:none"></div>
+</section>
+<div class="footer">Class Notes • نسخه آزمایشی</div>
+</div>
+
+<script src="./js/app.js" defer></script>
+<script>
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js", {scope: "./"}).catch(() => {}));
+}
+</script>
+</body>
+</html>
