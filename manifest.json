@@ -29,14 +29,14 @@
     {
       "src": "./screenshots/day.png",
       "sizes": "729x1536",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "نمای روز برنامه"
     },
     {
       "src": "./screenshots/night.png",
       "sizes": "711x1536",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "نمای شب برنامه"
     }
